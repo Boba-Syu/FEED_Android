@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public void fan(View view) throws Exception {
         if (tcpClient != null) {
             tcpClient.sendMsg(FAN);
-            FAN = FAN == Command.OPENFAN ? Command.OPENFAN : Command.CLOSEFAN;
+            FAN = FAN == Command.CLOSEFAN ? Command.OPENFAN : Command.CLOSEFAN;
         } else
             System.out.println("请先建立连接!");
     }
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public void fanTwo(View view) throws Exception {
         if (tcpClient != null) {
             tcpClient.sendMsg(FAN02);
-            FAN02 = FAN == Command.OPENFANTWO ? Command.OPENFANTWO : Command.CLOSEFANTWO;
+            FAN02 = FAN == Command.CLOSEFANTWO ? Command.OPENFANTWO : Command.CLOSEFANTWO;
         } else
             System.out.println("请先建立连接!");
     }
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public void gua(View view) throws Exception {
         if (tcpClient != null) {
             tcpClient.sendMsg(GUA);
-            GUA = GUA == Command.OPENGUA ? Command.OPENGUA : Command.CLOSEGUA;
+            GUA = GUA == Command.CLOSEGUA ? Command.OPENGUA : Command.CLOSEGUA;
         } else
             System.out.println("请先建立连接!");
     }
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     public void chuang(View view) throws Exception {
         if (tcpClient != null) {
             tcpClient.sendMsg(CHUANG);
-            CHUANG = CHUANG == Command.OPENCHUANG ? Command.OPENCHUANG : Command.CLOSECHUANG;
+            CHUANG = CHUANG == Command.CLOSECHUANG ? Command.OPENCHUANG : Command.CLOSECHUANG;
         } else
             System.out.println("请先建立连接!");
     }
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     public void tou(View view) throws Exception {
         if (tcpClient != null) {
             tcpClient.sendMsg(TOU);
-            TOU = TOU == Command.OPENTOU ? Command.OPENTOU : Command.CLOSETOU;
+            TOU = TOU == Command.CLOSETOU ? Command.OPENTOU : Command.CLOSETOU;
         } else
             System.out.println("请先建立连接!");
     }
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     public void shui(View view) throws Exception {
         if (tcpClient != null) {
             tcpClient.sendMsg(SHUI);
-            SHUI = SHUI == Command.OPENSHUI ? Command.OPENSHUI : Command.CLOSESHUI;
+            SHUI = SHUI == Command.CLOSESHUI ? Command.OPENSHUI : Command.CLOSESHUI;
         } else
             System.out.println("请先建立连接!");
     }
