@@ -1,7 +1,5 @@
 package transsocket;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -28,18 +26,21 @@ import io.netty.util.CharsetUtil;
  **/
 public class TcpClient {
 
-    private static Logger log = LogManager.getLogger(TcpClient.class);
+    public static String HOST = "47.94.238.110";
+    public static int PORT = 2345;
 
-    public static String HOST = "127.0.0.1";
-    public static int PORT = 8888;
+    public Bootstrap bootstrap = getBootstrap();
+    public Channel channel = getChannel(HOST, PORT);
 
-    public static Bootstrap bootstrap = getBootstrap();
-    public static Channel channel = getChannel(HOST, PORT);
+    public TcpClient() {
+        this.bootstrap = getBootstrap();
+        channel = getChannel(HOST, PORT);
+    }
 
     /**
      * 初始化Bootstrap
      */
-    public static final Bootstrap getBootstrap() {
+    public final Bootstrap getBootstrap() {
         EventLoopGroup group = new NioEventLoopGroup();
         Bootstrap b = new Bootstrap();
         b.group(group);
@@ -60,11 +61,11 @@ public class TcpClient {
     }
 
     //    连接端口
-    public static final Channel getChannel(String host, int port) {
+    public final Channel getChannel(String host, int port) {
         Channel channel = null;
         try {
             channel = bootstrap.connect(host, port).sync().channel();
-            log.info("TCP Client 已经在" + host + "的" + port + "端口建立Channel");
+            System.out.println("TCP Client 已经在" + host + "的" + port + "端口建立Channel");
         } catch (Exception e) {
             System.out.println("连接Server(IP{},PORT{})失败" + "host:" + host + "port:" + port + "e:" + e);
             return null;
@@ -79,13 +80,12 @@ public class TcpClient {
      * @author 张超 teavamc
      * @date 2019/5/2
      */
-    public static boolean sendMsg(String msg) throws Exception {
+    public void sendMsg(String msg) throws Exception {
         if (channel != null) {
             channel.writeAndFlush(msg).sync();
-            return true;
+            System.out.println("发送成功!");
         } else {
-            log.info("消息发送失败,连接尚未建立!");
-            return false;
+            System.out.println("消息发送失败,连接尚未建立!");
         }
     }
 
